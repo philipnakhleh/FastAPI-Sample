@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+passlib
+bcrypt
+python-jose
+gunicorn
+
+source /Users/philipnakhleh/PycharmProjects/FastAPI/blog-env/bin/activate
