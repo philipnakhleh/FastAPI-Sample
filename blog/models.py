@@ -1,20 +1,78 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean
 from sqlalchemy.orm import relationship
 
-class Blog(Base):
-    __tablename__ = 'blogs'
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String)
-    body = Column(String)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    owner = relationship("User", back_populates = 'blogs')
-
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = 'users_info'
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    first_name = Column(String)
+    last_name = Column(String)
+    birthday = Column(Date)
     email = Column(String)
-    password = Column(String)
+    phone = Column(String)
+    organization_name = Column(String)
+    organization_type = Column(String)
+    organization_street_name = Column(String)
+    country = Column(String)
+    city = Column(String)
+    postal_code = Column(String)
 
-    blogs = relationship('Blog', back_populates = 'owner')
+
+
+
+class Seller(Base):
+    __tablename__ = 'sellers_info'
+    id = Column(Integer, primary_key=True, index=True)
+    first_name = Column(String)
+    last_name = Column(String)
+    birthday = Column(Date)
+    email = Column(String)
+    phone = Column(String)
+    organization_name = Column(String)
+    organization_type = Column(String)
+    organization_street_name = Column(String)
+    country = Column(String)
+    city = Column(String)
+    postal_code = Column(String)
+    need_fund = Column(Boolean)
+    funding_amount = Column(Integer)
+    offer = Column(String)
+    Description = Column(String)
+
+
+class Buyer(Base):
+    __tablename__ = 'buyers_info'
+    id = Column(Integer, primary_key=True, index=True)
+    first_name = Column(String)
+    last_name = Column(String)
+    birthday = Column(Date)
+    email = Column(String)
+    phone = Column(String)
+    organization_name = Column(String)
+    organization_type = Column(String)
+    organization_street_name = Column(String)
+    country = Column(String)
+    city = Column(String)
+    postal_code = Column(String)
+    order = Column(String)
+    reason = Column(String)
+
+
+
+class Investor(Base):
+    __tablename__ = 'investors_info'
+    id = Column(Integer, primary_key=True, index=True)
+    first_name = Column(String)
+    last_name = Column(String)
+    birthday = Column(Date)
+    email = Column(String)
+    phone = Column(String)
+    organization_name = Column(String)
+    organization_type = Column(String)
+    organization_street_name = Column(String)
+    country = Column(String)
+    city = Column(String)
+    postal_code = Column(String)
+    amount = Column(Integer)
+    communication_time = Column(String)
+    communication_type = Column(String)

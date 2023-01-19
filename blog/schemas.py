@@ -1,46 +1,79 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from datetime import date
 
 class User(BaseModel):
-    name: str
+    first_name: str
+    last_name: str
+    birthday: date
     email: str
-    password: str
+    phone: str
+    organization_name: str
+    organization_type: str
+    organization_street_name: str
+    country: str
+    city: str
+    postal_code: str
 
-
-class BlogBase(BaseModel):
-    title: str
-    body: str
-
-
-class Blog(BlogBase):
-    title: str
-    body: str
-    class Config():
+    class Config:
         orm_mode = True
 
-class ShowUser(BaseModel):
-    name: str
+
+class Seller(BaseModel):
+    first_name: str
+    last_name: str
+    birthday: date
     email: str
-    blogs: List[Blog]
+    phone: str
+    organization_name: str
+    organization_type: str
+    organization_street_name: str
+    country: str
+    city: str
+    postal_code: str
+    need_fund: bool
+    funding_amount: int
+    offer: str
+    Description: str
 
-    class Config():
+    class Config:
         orm_mode = True
 
-class ShowBlog(BaseModel):
-    title: str
-    body: str
-    owner: ShowUser
 
-    class Config():
+class Buyer(BaseModel):
+    first_name: str
+    last_name: str
+    birthday: date
+    email: str
+    phone: str
+    organization_name: str
+    organization_type: str
+    organization_street_name: str
+    country: str
+    city: str
+    postal_code: str
+    order: str
+    reason: str
+
+    class Config:
         orm_mode = True
 
-class Login(BaseModel):
-    username: str
-    password: str
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+class Investor(BaseModel):
+    first_name: str
+    last_name: str
+    birthday: date
+    email: str
+    phone: str
+    organization_name: str
+    organization_type: str
+    organization_street_name: str
+    country: str
+    city: str
+    postal_code: str
+    amount: int
+    communication_time: str
+    communication_type: str
 
-class TokenData(BaseModel):
-    username: Optional[str] = None
+    class Config:
+        orm_mode = True
+

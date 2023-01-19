@@ -1,9 +1,8 @@
-fastapi
-uvicorn
-sqlalchemy
-passlib
+fastapi == 0.89.1
+uvicorn == 0.20.0
+sqlalchemy == 1.4.46
+passlib == 1.7.4
 bcrypt
 python-jose
 gunicorn
-
-source /Users/philipnakhleh/PycharmProjects/FastAPI/blog-env/bin/activate
+pydantic>=1.2.0,<2.0.0

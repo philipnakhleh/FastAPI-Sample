@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from fastapi import FastAPI
+from blog import models
+from blog.database import engine
+from blog.router import seller, user, buyer, investor
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+app = FastAPI()
+
+models.Base.metadata.create_all(engine)
+
+app.include_router(seller.router)
+
+app.include_router(buyer.router)
+
+app.include_router(investor.router)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+#app.include_router(authentication.router)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
