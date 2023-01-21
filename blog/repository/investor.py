@@ -28,7 +28,9 @@ def create(db: Session, request: schemas.Investor, code):
     db.add(new_investor)
     db.commit()
     db.refresh(new_investor)
-    return new_investor
+    return {
+        'id' : new_investor.id
+    }
 
 
 def delete(db: Session, id):

@@ -28,7 +28,9 @@ def create(db: Session, request: schemas.Buyer, code: str):
     db.add(new_buyer)
     db.commit()
     db.refresh(new_buyer)
-    return new_buyer
+    return {
+        'id' : new_buyer.id
+    }
 
 
 def delete(db: Session, id):
