@@ -5,6 +5,10 @@ from fastapi_mail import FastMail, MessageSchema
 from pydantic import EmailStr
 from typing import List
 
+def get_all(db: Session):
+    buyers = db.query(models.Buyer).all()
+    return buyers
+
 
 def create(db: Session, request: schemas.Buyer, code: str):
     new_buyer = models.Buyer(
@@ -29,7 +33,7 @@ def create(db: Session, request: schemas.Buyer, code: str):
     db.commit()
     db.refresh(new_buyer)
     return {
-        'id' : new_buyer.id
+        'id' : request.id
     }
 
 
