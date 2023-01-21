@@ -14,6 +14,7 @@ def create(db: Session, request: schemas.Buyer, code: str):
         email= request.email,
         phone= request.phone,
         organization_name= request.organization_name,
+        organization_website=request.organization_website,
         organization_type= request.organization_type,
         organization_street_name= request.organization_street_name,
         country= request.country,

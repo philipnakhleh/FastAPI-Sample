@@ -15,6 +15,7 @@ def create(db: Session, request: schemas.Investor, code):
         phone=request.phone,
         organization_name=request.organization_name,
         organization_type=request.organization_type,
+        organization_website=request.organization_website,
         organization_street_name=request.organization_street_name,
         country=request.country,
         city=request.city,

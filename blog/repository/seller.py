@@ -17,7 +17,7 @@ def create(db: Session, request: schemas.Seller, code: bytes):
         birthday=request.birthday,
         email=request.email,
         phone=request.phone,
-        organization_webiste=request.organization_website,
+        organization_website=request.organization_website,
         organization_name=request.organization_name,
         organization_type=request.organization_type,
         organization_street_name=request.organization_street_name,
