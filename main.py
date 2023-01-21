@@ -13,8 +13,6 @@ app.include_router(buyer.router)
 
 app.include_router(investor.router)
 
-# app.include_router(email.router)
-
 #app.include_router(authentication.router)
 
 
