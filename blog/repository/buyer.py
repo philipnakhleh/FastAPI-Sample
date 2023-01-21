@@ -1,12 +1,12 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status
 from .. import models, schemas
+from fastapi_mail import FastMail, MessageSchema
+from pydantic import EmailStr
+from typing import List
 
-def get_all(db: Session):
-    buyers = db.query(models.Buyer).all()
-    return buyers
 
-def create(db: Session, request: schemas.Buyer):
+def create(db: Session, request: schemas.Buyer, code: str):
     new_buyer = models.Buyer(
         first_name= request.first_name,
         last_name= request.last_name,
@@ -21,7 +21,9 @@ def create(db: Session, request: schemas.Buyer):
         postal_code= request.postal_code,
         order = request.order,
         reason = request.reason,
+        verification_code=code
     )
+
     db.add(new_buyer)
     db.commit()
     db.refresh(new_buyer)
@@ -53,3 +55,17 @@ def get_id(db: Session, id):
     if not buyer:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Blog with id {id} is not available')
     return buyer
+
+def verify_code(db: Session, id, code):
+    buyer = db.query(models.Buyer).filter(models.Buyer.id == id).first()
+    if not buyer:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Blog with id {id} is not available')
+    if(code == buyer.verification_code):
+        buyer.verified = True
+        db.commit()
+        return {
+            'message' : 'verified'
+        }
+    return {
+        'message': 'Wrong Code'
+    }

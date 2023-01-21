@@ -1,5 +1,5 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, LargeBinary
 from sqlalchemy.orm import relationship
 
 class User(Base):
@@ -30,6 +30,7 @@ class Seller(Base):
     phone = Column(String)
     organization_name = Column(String)
     organization_type = Column(String)
+    organization_website = Column(String)
     organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
@@ -38,6 +39,8 @@ class Seller(Base):
     funding_amount = Column(Integer)
     offer = Column(String)
     Description = Column(String)
+    verification_code = Column(String, default="")
+    verified = Column(Boolean, default=False)
 
 
 class Buyer(Base):
@@ -50,12 +53,15 @@ class Buyer(Base):
     phone = Column(String)
     organization_name = Column(String)
     organization_type = Column(String)
+    organization_website = Column(String)
     organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
     postal_code = Column(String)
     order = Column(String)
     reason = Column(String)
+    verification_code = Column(String, default="")
+    verified = Column(Boolean, default=False)
 
 
 
@@ -69,6 +75,7 @@ class Investor(Base):
     phone = Column(String)
     organization_name = Column(String)
     organization_type = Column(String)
+    organization_website = Column(String)
     organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
@@ -76,3 +83,5 @@ class Investor(Base):
     amount = Column(Integer)
     communication_time = Column(String)
     communication_type = Column(String)
+    verification_code = Column(String, default="")
+    verified = Column(Boolean, default=False)

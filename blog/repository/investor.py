@@ -6,7 +6,7 @@ def get_all(db: Session):
     investors = db.query(models.Investor).all()
     return investors
 
-def create(db: Session, request: schemas.Investor):
+def create(db: Session, request: schemas.Investor, code):
     new_investor = models.Investor(
         first_name=request.first_name,
         last_name=request.last_name,
@@ -22,6 +22,7 @@ def create(db: Session, request: schemas.Investor):
         amount = request.amount,
         communication_time = request.communication_time,
         communication_type = request.communication_type,
+        verification_code=code
     )
     db.add(new_investor)
     db.commit()
@@ -56,3 +57,17 @@ def get_id(db: Session, id):
     if not investor:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Blog with id {id} is not available')
     return investor
+
+def verify_code(db: Session, id, code):
+    investor = db.query(models.Investor).filter(models.Investor.id == id).first()
+    if not investor:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Blog with id {id} is not available')
+    if(code == investor.verification_code):
+        investor.verified = True
+        db.commit()
+        return {
+            'message' : 'verified'
+        }
+    return {
+        'message': 'Wrong Code'
+    }

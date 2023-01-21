@@ -6,3 +6,4 @@ bcrypt
 python-jose
 gunicorn
 pydantic>=1.2.0,<2.0.0
+fastapi_mail
