@@ -34,7 +34,9 @@ def create(db: Session, request: schemas.Seller, code: bytes):
     db.add(new_seller)
     db.commit()
     db.refresh(new_seller)
-    return new_seller
+    return {
+        'id' : new_seller.id
+    }
 
 
 def delete(db: Session, id):
