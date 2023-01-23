@@ -33,7 +33,7 @@ def create(db: Session, request: schemas.Buyer, code: str):
     db.commit()
     db.refresh(new_buyer)
     return {
-        'id' : request.id
+        'id' : new_buyer.id
     }
 
 
