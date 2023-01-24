@@ -26,6 +26,7 @@ def create(db: Session, request: schemas.Investor, code):
         amount = request.amount,
         communication_time = request.communication_time,
         communication_type = request.communication_type,
+        description = request.description,
         verification_code=code
     )
     db.add(new_investor)

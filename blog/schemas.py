@@ -93,6 +93,7 @@ class Investor(BaseModel):
     amount: int
     communication_time: str
     communication_type: str
+    description: str
     __verification_code: str = ""
     __verified: bool = False
 

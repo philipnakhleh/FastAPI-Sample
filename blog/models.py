@@ -83,5 +83,6 @@ class Investor(Base):
     amount = Column(Integer)
     communication_time = Column(String)
     communication_type = Column(String)
+    description = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
