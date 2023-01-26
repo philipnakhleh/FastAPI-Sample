@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import date
+from typing import List
 
 
 class Blog(BaseModel):
@@ -28,6 +29,12 @@ class Show_Blog(BaseModel):
     blog_description: str
     blog_writer: str
     blog_reviewer: str
+
+    class Config:
+        orm_mode = True
+
+class Show_Blog2(BaseModel):
+    data: List[Show_in_Blogs_Page]
 
     class Config:
         orm_mode = True

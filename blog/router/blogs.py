@@ -14,9 +14,11 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model= List[blogs_schemas.Show_in_Blogs_Page])
+@router.get('/', response_model= blogs_schemas.Show_Blog2)
 def all(db: Session = Depends(get_db)):
-    return blogs.get_list(db)
+    return {
+        'data' : blogs.get_list(db)
+    }
 
 
 @router.get('/{id}', status_code=200, response_model= blogs_schemas.Show_Blog)
