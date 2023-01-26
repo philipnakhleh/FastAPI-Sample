@@ -17,6 +17,7 @@ class Show_in_Blogs_Page(BaseModel):
     blog_title: str
     blog_summarization: str
     blog_date: date
+    id: int
 
     class Config:
         orm_mode = True
