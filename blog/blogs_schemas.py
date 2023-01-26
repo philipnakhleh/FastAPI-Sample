@@ -15,7 +15,7 @@ class Blog(BaseModel):
 
 class Show_in_Blogs_Page(BaseModel):
     blog_title: str
-    blog_description: str
+    blog_summarization: str
     blog_date: date
 
     class Config:
@@ -24,7 +24,7 @@ class Show_in_Blogs_Page(BaseModel):
 class Show_Blog(BaseModel):
     blog_title: str
     blog_date: date
-    blog_summarization: str
+    blog_description: str
     blog_writer: str
     blog_reviewer: str
 
