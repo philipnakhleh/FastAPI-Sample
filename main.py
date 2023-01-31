@@ -10,6 +10,7 @@ origins = [
     "http://localhost",
     "http://localhost:8080",
     "https://cozmos.8byteslab.com",
+    "https://cozmos-ae1a6.web.app"
 ]
 
 app.add_middleware(
