@@ -1,23 +1,6 @@
 from .database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, LargeBinary
 
-class User(Base):
-    __tablename__ = 'users_info'
-    id = Column(Integer, primary_key=True, index=True)
-    first_name = Column(String)
-    last_name = Column(String)
-    birthday = Column(Date)
-    email = Column(String)
-    phone = Column(String)
-    organization_name = Column(String)
-    organization_type = Column(String)
-    organization_street_name = Column(String)
-    country = Column(String)
-    city = Column(String)
-    postal_code = Column(String)
-
-
-
 
 class Seller(Base):
     __tablename__ = 'sellers_info'
@@ -30,7 +13,6 @@ class Seller(Base):
     organization_name = Column(String)
     organization_type = Column(String)
     organization_website = Column(String)
-    organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
     postal_code = Column(String)
@@ -38,6 +20,7 @@ class Seller(Base):
     funding_amount = Column(Integer)
     offer = Column(String)
     Description = Column(String)
+    pain_points = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
 
@@ -53,12 +36,12 @@ class Buyer(Base):
     organization_name = Column(String)
     organization_type = Column(String)
     organization_website = Column(String)
-    organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
     postal_code = Column(String)
     order = Column(String)
     reason = Column(String)
+    pain_points = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
 
@@ -75,7 +58,6 @@ class Investor(Base):
     organization_name = Column(String)
     organization_type = Column(String)
     organization_website = Column(String)
-    organization_street_name = Column(String)
     country = Column(String)
     city = Column(String)
     postal_code = Column(String)
@@ -83,5 +65,6 @@ class Investor(Base):
     communication_time = Column(String)
     communication_type = Column(String)
     description = Column(String)
+    pain_points = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)

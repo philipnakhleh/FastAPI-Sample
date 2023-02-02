@@ -19,7 +19,6 @@ def create(db: Session, request: schemas.Investor, code):
         organization_name=request.organization_name,
         organization_type=request.organization_type,
         organization_website=request.organization_website,
-        organization_street_name=request.organization_street_name,
         country=request.country,
         city=request.city,
         postal_code=request.postal_code,
@@ -27,7 +26,8 @@ def create(db: Session, request: schemas.Investor, code):
         communication_time = request.communication_time,
         communication_type = request.communication_type,
         description = request.description,
-        verification_code=code
+        verification_code=code,
+        pain_points = request.pain_points
     )
     db.add(new_investor)
     db.commit()

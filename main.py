@@ -1,9 +1,22 @@
 from fastapi import FastAPI
 from blog import models, blogs_models
 from blog.database import engine
-from blog.router import seller, user, buyer, investor, email, blogs
+from blog.router import seller, buyer, investor, email, blogs
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 models.Base.metadata.create_all(engine)
 blogs_models.Base.metadata.create_all(engine)

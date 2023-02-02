@@ -14,7 +14,8 @@ def create(db: Session, request: blogs_schemas.Blog):
         blog_writer = request.blog_writer,
         blog_date = request.blog_date,
         blog_summarization = request.blog_summarization,
-        blog_reviewer = request.blog_reviewer
+        blog_reviewer = request.blog_reviewer,
+        blog_cover_pic = request.blog_cover_pic
     )
 
     db.add(new_blog)

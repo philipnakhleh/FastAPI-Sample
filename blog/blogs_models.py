@@ -9,4 +9,5 @@ class Blog(Base):
     blog_date = Column(Date)
     blog_summarization = Column(String)
     blog_writer = Column(String)
+    blog_cover_pic = Column(String)
     blog_reviewer = Column(String, nullable = True)

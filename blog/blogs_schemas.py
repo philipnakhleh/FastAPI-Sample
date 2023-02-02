@@ -10,6 +10,7 @@ class Blog(BaseModel):
     blog_summarization : str
     blog_writer : str
     blog_reviewer : str
+    blog_cover_pic: str
 
     class Config:
         orm_mode = True
@@ -19,6 +20,7 @@ class Show_in_Blogs_Page(BaseModel):
     blog_summarization: str
     blog_date: date
     id: int
+    blog_cover_pic: str
 
     class Config:
         orm_mode = True
@@ -29,6 +31,7 @@ class Show_Blog(BaseModel):
     blog_description: str
     blog_writer: str
     blog_reviewer: str
+    blog_cover_pic: str
 
     class Config:
         orm_mode = True

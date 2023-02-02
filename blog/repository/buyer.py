@@ -20,13 +20,13 @@ def create(db: Session, request: schemas.Buyer, code: str):
         organization_name= request.organization_name,
         organization_website=request.organization_website,
         organization_type= request.organization_type,
-        organization_street_name= request.organization_street_name,
         country= request.country,
         city= request.city,
         postal_code= request.postal_code,
         order = request.order,
         reason = request.reason,
-        verification_code=code
+        verification_code=code,
+        pain_points = request.pain_points
     )
 
     db.add(new_buyer)

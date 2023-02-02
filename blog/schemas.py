@@ -2,26 +2,6 @@ from pydantic import BaseModel
 from datetime import date
 
 
-
-
-class User(BaseModel):
-    first_name: str
-    last_name: str
-    birthday: date
-    email: str
-    phone: str
-    organization_name: str
-    organization_website: str
-    organization_type: str
-    organization_street_name: str
-    country: str
-    city: str
-    postal_code: str
-
-    class Config:
-        orm_mode = True
-
-
 class Seller(BaseModel):
     first_name: str
     last_name: str
@@ -31,7 +11,6 @@ class Seller(BaseModel):
     organization_name: str
     organization_type: str
     organization_website: str
-    organization_street_name: str
     country: str
     city: str
     postal_code: str
@@ -39,6 +18,7 @@ class Seller(BaseModel):
     funding_amount: int
     offer: str
     Description: str
+    pain_points: str
     __verification_code: str = ""
     __verified: bool = False
 
@@ -60,13 +40,13 @@ class Buyer(BaseModel):
     organization_name: str
     organization_type: str
     organization_website: str
-    organization_street_name: str
     country: str
     city: str
     postal_code: str
     order: str
     reason: str
     __verification_code: str
+    pain_points: str
     __verified: bool = False
 
     def set_verification(self, code: str):
@@ -86,7 +66,6 @@ class Investor(BaseModel):
     organization_name: str
     organization_type: str
     organization_website: str
-    organization_street_name: str
     country: str
     city: str
     postal_code: str
@@ -94,6 +73,7 @@ class Investor(BaseModel):
     communication_time: str
     communication_type: str
     description: str
+    pain_points: str
     __verification_code: str = ""
     __verified: bool = False
 
