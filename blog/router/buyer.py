@@ -7,6 +7,7 @@ from ..repository import buyer
 import math, random
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 import hashlib
+from email_string import get_email
 
 conf = ConnectionConfig(
     MAIL_USERNAME = "cozmosluna",
@@ -47,15 +48,12 @@ def all(db: Session = Depends(get_db)):
 async def create(request: schemas.Buyer, db: Session = Depends(get_db)):
     code = generate_verification_code()
     emails = [request.email]
-    template = f'''
-        Hi {request.first_name}, I am Cozmos, Your Verification code is:
-        {code}
-        '''
+    template = get_email(request.first_name, code)
     message = MessageSchema(
         subject="Verification Code",
         recipients=emails,
         body=template,
-        subtype="plain"
+        subtype="html"
     )
 
     fm = FastMail(conf)
