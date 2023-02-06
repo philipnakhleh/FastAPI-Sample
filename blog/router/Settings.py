@@ -19,8 +19,11 @@ def all():
     return {
         'Language' : 'ar',
         'Organization type' : [
-            ('Company', True),
-            ('University', True),
-             ('Other', False),
+            {'name':'Company',
+             'mandatory': True},
+            {'name' : 'University',
+             'mandatory' : True},
+            {'name':'Other',
+             'mandatory' : False},
         ]
     }
