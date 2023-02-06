@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from blog import models, blogs_models
 from blog.database import engine
-from blog.router import seller, buyer, investor, email, blogs
+from blog.router import seller, buyer, investor, email, blogs, Settings
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -33,6 +33,8 @@ app.include_router(buyer.router)
 #Investor Route
 app.include_router(investor.router)
 
+#Settings Route
+app.include_router(Settings.router)
 #app.include_router(authentication.router)
 
 
