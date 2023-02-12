@@ -19,6 +19,7 @@ class Seller(BaseModel):
     offer: str
     Description: str
     pain_points: str
+    country_code: str
     __verification_code: str = ""
     __verified: bool = False
 
@@ -45,6 +46,7 @@ class Buyer(BaseModel):
     postal_code: str
     order: str
     reason: str
+    country_code: str
     __verification_code: str
     pain_points: str
     __verified: bool = False
@@ -74,6 +76,7 @@ class Investor(BaseModel):
     communication_type: str
     description: str
     pain_points: str
+    country_code: str
     __verification_code: str = ""
     __verified: bool = False
 

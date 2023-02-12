@@ -28,7 +28,8 @@ def create(db: Session, request: schemas.Seller, code: bytes):
         offer = request.offer,
         Description = request.Description,
         verification_code = code,
-        pain_points = request.pain_points
+        pain_points = request.pain_points,
+        country_code= request.country_code
     )
 
     db.add(new_seller)
