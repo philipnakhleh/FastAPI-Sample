@@ -91,7 +91,7 @@ def get_email(first_name, code)->str:
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td align="center" class="esd-block-text">
-                                                                                            <p style="color: #f9f22c; font-size: 46px;">{code}</p>
+                                                                                            <p style="color: #ffe01a; font-size: 46px;">{code}</p>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </tbody>
