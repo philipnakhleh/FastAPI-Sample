@@ -21,6 +21,7 @@ class Seller(Base):
     offer = Column(String)
     Description = Column(String)
     pain_points = Column(String)
+    country_code = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
 
@@ -42,6 +43,7 @@ class Buyer(Base):
     order = Column(String)
     reason = Column(String)
     pain_points = Column(String)
+    country_code = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
 
@@ -66,5 +68,17 @@ class Investor(Base):
     communication_type = Column(String)
     description = Column(String)
     pain_points = Column(String)
+    country_code = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
+
+class Subscribers(Base):
+    __tablename__ = 'subscribers'
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String)
+
+class Messages(Base):
+    __tablename__ = 'messages'
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String)
+    content = Column(String)

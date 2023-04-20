@@ -28,3 +28,7 @@ def show(id, db: Session = Depends(get_db)):
 @router.post('/', status_code=status.HTTP_201_CREATED)
 async def create(request: blogs_schemas.Blog, db: Session = Depends(get_db)):
     return blogs.create(db, request)
+
+@router.delete('/{id}', status_code=status.HTTP_202_ACCEPTED)
+def destroy(id, db: Session = Depends(get_db)):
+    return blogs.delete(db, id)

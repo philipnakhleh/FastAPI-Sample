@@ -27,7 +27,8 @@ def create(db: Session, request: schemas.Investor, code):
         communication_type = request.communication_type,
         description = request.description,
         verification_code=code,
-        pain_points = request.pain_points
+        pain_points = request.pain_points,
+        country_code= request.country_code
     )
     db.add(new_investor)
     db.commit()
