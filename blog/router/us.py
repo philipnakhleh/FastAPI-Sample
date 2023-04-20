@@ -50,5 +50,5 @@ async def create(request: schemas.Messages, db: Session = Depends(get_db)):
 
 @router.get('/get_messages')
 def all(db: Session = Depends(get_db)):
-    ret = db.query(models.Subscribers).all()
+    ret = db.query(models.Messages).all()
     return ret
