@@ -86,3 +86,14 @@ class Investor(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Subscribers(BaseModel):
+    email: str
+    class Config:
+        orm_mode = True
+
+class Messages(BaseModel):
+    email: str
+    content: str
+    class Config:
+        orm_mode = True

@@ -32,3 +32,12 @@ def get_id(db: Session, id):
     if not blog:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Blog with id {id} is not available')
     return blog
+
+def delete(db: Session, id):
+    blog = db.query(blogs_models.Blog).filter(blogs_models.Blog.id == id)
+    if not blog.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'Blog with id {id} not found')
+    blog.delete(synchronize_session=False)
+    db.commit()
+    return 'done'

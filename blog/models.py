@@ -71,3 +71,14 @@ class Investor(Base):
     country_code = Column(String)
     verification_code = Column(String, default="")
     verified = Column(Boolean, default=False)
+
+class Subscribers(Base):
+    __tablename__ = 'subscribers'
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String)
+
+class Messages(Base):
+    __tablename__ = 'messages'
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String)
+    content = Column(String)
