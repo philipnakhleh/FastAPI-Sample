@@ -42,9 +42,6 @@ def get_blogs():
 
         items.append(item)
 
-
     return {
         'data' : items
     }
-
-get_blogs()
