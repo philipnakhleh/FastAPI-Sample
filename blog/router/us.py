@@ -5,6 +5,7 @@ from typing import List
 from ..database import get_db
 from ..repository import blogs
 import math, random
+from ..blog_fetcher import get_blogs
 
 
 
@@ -52,3 +53,7 @@ async def create(request: schemas.Messages, db: Session = Depends(get_db)):
 def all(db: Session = Depends(get_db)):
     ret = db.query(models.Messages).all()
     return ret
+
+@router.get('/get_blogs')
+def medium_blogs():
+    get_blogs()
