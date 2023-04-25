@@ -4,7 +4,8 @@ from requests import get
 
 def get_blogs():
     r = get('https://medium.com/@tradinos-ug/feed')
-    soup = BeautifulSoup(r.content, 'xml')
+
+    soup = BeautifulSoup(r.content, 'lxml')
 
     items = []
 
@@ -20,13 +21,13 @@ def get_blogs():
         date = i.find('atom:updated').text[:10]
         item['date'] = date
 
+        img = i.find('img')
+        item['image_url'] = img['src']
+
         content = i.find('content:encoded')
 
-        sp = BeautifulSoup(content.text, 'html')
-        item['image_url'] = sp.find('img')['src']
-
-        last = content.text
-        last = '<html><head></head><body>' + last + '</body></html>'
+        last = str(content).replace('<content:encoded>&lt;![CDATA[', '').replace(']]&gt;</content:encoded>', '')
+        last = '<html><head><meta charset="utf-8"></head><body>' + last + '</body></html>'
 
         item['content'] = last
 
@@ -41,6 +42,9 @@ def get_blogs():
 
         items.append(item)
 
+
     return {
         'data' : items
     }
+
+get_blogs()
