@@ -4,7 +4,6 @@ from requests import get
 
 def get_blogs():
     r = get('https://medium.com/@tradinos-ug/feed')
-    print(r.content)
     soup = BeautifulSoup(r.content, 'xml')
 
     items = []
@@ -41,9 +40,6 @@ def get_blogs():
         item['categories'] = cate
 
         items.append(item)
-
-    for item in items:
-        print(item['categories'])
 
     return {
         'data' : items
