@@ -56,4 +56,4 @@ def all(db: Session = Depends(get_db)):
 
 @router.get('/get_blogs')
 def medium_blogs():
-    get_blogs()
+    return get_blogs()
