@@ -8,18 +8,19 @@ import math, random
 from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 import hashlib
 
-conf = ConnectionConfig(
-    MAIL_USERNAME = "cozmosluna",
-    MAIL_PASSWORD = "owleenokwwbhhbwy",
-    MAIL_FROM = "cozmosluna@gmail.com",
-    MAIL_PORT = 587,
-    MAIL_SERVER="smtp.gmail.com",
-    MAIL_FROM_NAME="Cozmos Luna Mission",
-    MAIL_STARTTLS=True,
-    MAIL_SSL_TLS=False,
-    USE_CREDENTIALS=True,
-    VALIDATE_CERTS=True
-)
+# conf = ConnectionConfig(
+#     MAIL_USERNAME = "cozmosluna",
+#     MAIL_PASSWORD = "owleenokwwbhhbwy",
+#     MAIL_FROM = "cozmosluna@gmail.com",
+#     MAIL_PORT = 587,
+#     MAIL_SERVER="smtp.gmail.com",
+#     MAIL_FROM_NAME="Cozmos Luna Mission",
+#     MAIL_STARTTLS=True,
+#     MAIL_SSL_TLS=False,
+#     USE_CREDENTIALS=True,
+#     VALIDATE_CERTS=True
+# )
+
 
 def get_email(first_name, code)->str:
     return f'''

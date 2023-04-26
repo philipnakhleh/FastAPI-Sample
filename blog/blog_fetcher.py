@@ -31,6 +31,9 @@ def get_blogs():
 
         item['content'] = last
 
+        item['descripion'] = content.text.replace('<![CDATA[', '').replace(']]>', '')[:100] + '...'
+
+
         categories = i.find_all('category')
         cate = []
         for cat in categories:
