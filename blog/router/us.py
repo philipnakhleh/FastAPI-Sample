@@ -64,22 +64,22 @@ def medium_blogs():
     return get_blogs()
 
 @router.get('/get_blogs_by_page')
-def get_blogs_for_page(pagenum: int, length: int):
+def get_blogs_for_page(request: schemas.BlogsPage):
     blogs =  get_blogs()['data']
     all = len(blogs)
 
-    number = int(all // length)
-    if all % length != 0:
+    number = int(all // request.length)
+    if all % request.length != 0:
         number+=1
 
-    if pagenum >= number or pagenum < 0:
+    if request.pagenum >= number or request.pagenum < 0:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Limit of pages exceeded')
 
     r = all
-    if pagenum*length+length < r:
-        r = pagenum*length+length
+    if request.pagenum*request.length+request.length < r:
+        r = request.pagenum*request.length+request.length
 
-    ret_blogs = blogs[pagenum*length: r]
+    ret_blogs = blogs[request.pagenum*request.length: r]
 
     return {
         'blogs' : ret_blogs,
