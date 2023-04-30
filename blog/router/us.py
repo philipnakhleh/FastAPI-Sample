@@ -26,6 +26,11 @@ async def create(request: schemas.Subscribers, db: Session = Depends(get_db)):
         email = request.email
     )
 
+    subscriber = db.query(models.Subscribers).filter(models.Subscribers.email == request.email)
+    if subscriber.first():
+        raise HTTPException(status_code=status.HTTP_302_FOUND,
+                            detail=f'Subscriber Exists')
+
     db.add(new_subscriber)
     db.commit()
     db.refresh(new_subscriber)
@@ -57,3 +62,52 @@ def all(db: Session = Depends(get_db)):
 @router.get('/get_blogs')
 def medium_blogs():
     return get_blogs()
+
+@router.get('/get_blogs_by_page')
+def get_blogs_for_page(pagenum: int, length: int):
+    blogs =  get_blogs()['data']
+    all = len(blogs)
+
+    number = int(all // length)
+    if all % length != 0:
+        number+=1
+
+    if pagenum >= number or pagenum < 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Limit of pages exceeded')
+
+    r = all
+    if pagenum*length+length < r:
+        r = pagenum*length+length
+
+    ret_blogs = blogs[pagenum*length: r]
+
+    return {
+        'blogs' : ret_blogs,
+        'length': number
+    }
+
+@router.delete('/delete_sub', status_code=status.HTTP_202_ACCEPTED)
+def destroy(email: str, db: Session = Depends(get_db)):
+    subscriber = db.query(models.Subscribers).filter(models.Subscribers.email == email)
+    if not subscriber.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'Subscriber is not found')
+    subscriber.delete(synchronize_session=False)
+    db.commit()
+    return {
+        'message' : 'done'
+    }
+
+@router.get('/settings')
+def all():
+    return {
+        'Language' : 'ar',
+        'Organization type' : [
+            {'name':'Company',
+             'mandatory': True},
+            {'name' : 'University',
+             'mandatory' : True},
+            {'name':'Other',
+             'mandatory' : False},
+        ]
+    }

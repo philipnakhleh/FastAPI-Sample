@@ -9,18 +9,17 @@ from fastapi_mail import FastMail, MessageSchema,ConnectionConfig
 import hashlib
 
 conf = ConnectionConfig(
-    MAIL_USERNAME = "cozmosluna",
-    MAIL_PASSWORD = "owleenokwwbhhbwy",
-    MAIL_FROM = "cozmosluna@gmail.com",
-    MAIL_PORT = 587,
-    MAIL_SERVER="smtp.gmail.com",
-    MAIL_FROM_NAME="Cozmos Luna Mission",
-    MAIL_STARTTLS=True,
-    MAIL_SSL_TLS=False,
-    USE_CREDENTIALS=True,
-    VALIDATE_CERTS=True
+    MAIL_USERNAME="no-reply@cozmos-space.com",
+    MAIL_PASSWORD="Ov1fIA4T#R)F",
+    MAIL_FROM="no-reply@cozmos-space.com",
+    MAIL_PORT = 465,
+    MAIL_SERVER="mail.cozmos-space.com",
+    MAIL_FROM_NAME="no-reply",
+    MAIL_STARTTLS = False,
+    MAIL_SSL_TLS = True,
+    USE_CREDENTIALS = True,
+    VALIDATE_CERTS = True
 )
-
 def get_email(first_name, code)->str:
     return f'''
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

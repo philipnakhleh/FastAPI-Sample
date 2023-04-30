@@ -97,3 +97,7 @@ class Messages(BaseModel):
     content: str
     class Config:
         orm_mode = True
+
+class BlogsPage(BaseModel):
+    pagenum: int
+    length: int
