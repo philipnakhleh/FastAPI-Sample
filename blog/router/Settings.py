@@ -13,17 +13,3 @@ router = APIRouter(
     tags= ['settings']
 )
 
-
-@router.get('/')
-def all():
-    return {
-        'Language' : 'ar',
-        'Organization type' : [
-            {'name':'Company',
-             'mandatory': True},
-            {'name' : 'University',
-             'mandatory' : True},
-            {'name':'Other',
-             'mandatory' : False},
-        ]
-    }

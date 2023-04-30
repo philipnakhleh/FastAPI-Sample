@@ -97,3 +97,17 @@ def destroy(email: str, db: Session = Depends(get_db)):
     return {
         'message' : 'done'
     }
+
+@router.get('/settings')
+def all():
+    return {
+        'Language' : 'ar',
+        'Organization type' : [
+            {'name':'Company',
+             'mandatory': True},
+            {'name' : 'University',
+             'mandatory' : True},
+            {'name':'Other',
+             'mandatory' : False},
+        ]
+    }
