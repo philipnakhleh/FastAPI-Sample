@@ -28,8 +28,9 @@ async def create(request: schemas.Subscribers, db: Session = Depends(get_db)):
 
     subscriber = db.query(models.Subscribers).filter(models.Subscribers.email == request.email)
     if subscriber.first():
-        raise HTTPException(status_code=status.HTTP_302_FOUND,
-                            detail=f'Subscriber Exists')
+        return {
+            'message': 'Subscriber Exists'
+        }
 
     db.add(new_subscriber)
     db.commit()
