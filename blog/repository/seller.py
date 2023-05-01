@@ -8,7 +8,9 @@ import hashlib
 
 def get_all(db: Session):
     sellers = db.query(models.Seller).all()
-    return sellers
+    return {
+        'data' : sellers
+    }
 
 def create(db: Session, request: schemas.Seller, code: bytes):
     new_seller = models.Seller(

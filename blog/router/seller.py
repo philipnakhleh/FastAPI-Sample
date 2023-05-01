@@ -128,7 +128,7 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=List[schemas.Seller])
+@router.get('/')
 def all(db: Session = Depends(get_db)):
     return seller.get_all(db)
 
