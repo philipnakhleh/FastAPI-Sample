@@ -4,7 +4,7 @@ from blog.database import engine
 from blog.router import seller, buyer, investor, us, blogs, Settings
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(docs_url=None, redoc_url=None)
+app = FastAPI()
 
 
 origins = ["*"]
