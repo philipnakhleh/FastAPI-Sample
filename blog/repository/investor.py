@@ -7,7 +7,9 @@ def get_all(db: Session):
     return investors
 def get_all(db: Session):
     investors = db.query(models.Investor).all()
-    return investors
+    return {
+        'data' : investors
+    }
 
 def create(db: Session, request: schemas.Investor, code):
     new_investor = models.Investor(

@@ -7,7 +7,9 @@ from typing import List
 
 def get_all(db: Session):
     buyers = db.query(models.Buyer).all()
-    return buyers
+    return {
+        'data' : buyers
+    }
 
 
 def create(db: Session, request: schemas.Buyer, code: str):
