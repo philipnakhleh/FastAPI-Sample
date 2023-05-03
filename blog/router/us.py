@@ -58,7 +58,9 @@ async def create(request: schemas.Messages, db: Session = Depends(get_db)):
 @router.get('/get_messages')
 def all(db: Session = Depends(get_db)):
     ret = db.query(models.Messages).all()
-    return ret
+    return {
+        'data': ret
+    }
 
 @router.get('/get_blogs')
 def medium_blogs():
