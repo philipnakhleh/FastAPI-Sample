@@ -67,15 +67,15 @@ def get_stats(
         'total messages' : len(messages)
     }
 
-@router.post('/create_user')
-def add_user(
-    db: Session = Depends(get_db),
-):
-    new_user = models.User(
-        username='admin@cozmos-space.com',
-        password=_hash.bcrypt.hash('cozmos-space@1234567890')
-    )
-
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
+# @router.post('/create_user')
+# def add_user(
+#     db: Session = Depends(get_db),
+# ):
+#     new_user = models.User(
+#         username='admin@cozmos-space.com',
+#         password=_hash.bcrypt.hash('cozmos-space@1234567890')
+#     )
+#
+#     db.add(new_user)
+#     db.commit()
+#     db.refresh(new_user)
