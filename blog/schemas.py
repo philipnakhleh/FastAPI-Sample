@@ -101,3 +101,10 @@ class Messages(BaseModel):
 class BlogsPage(BaseModel):
     pagenum: int
     length: int
+
+class User(BaseModel):
+    username: str
+    password: str
+
+    class Config:
+        orm_mode = True

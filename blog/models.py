@@ -1,5 +1,6 @@
 from .database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, LargeBinary
+import passlib.hash as _hash
 
 
 class Seller(Base):
@@ -82,3 +83,13 @@ class Messages(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String)
     content = Column(String)
+
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String)
+    password = Column(String)
+
+    def verify_password(self, password: str):
+        return _hash.bcrypt.verify(password, self.password)
