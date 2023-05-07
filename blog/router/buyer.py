@@ -129,10 +129,6 @@ router = APIRouter(
 )
 
 
-@router.get('/')
-def all(db: Session = Depends(get_db)):
-    return buyer.get_all(db)
-
 @router.post('/', status_code=status.HTTP_201_CREATED)
 async def create(request: schemas.Buyer, db: Session = Depends(get_db)):
     code = generate_verification_code()

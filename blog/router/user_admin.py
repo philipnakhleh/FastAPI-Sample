@@ -5,6 +5,7 @@ from .. import schemas, models
 import jwt
 from ..database import get_db
 import passlib.hash as _hash
+from ..repository import buyer, seller, investor
 
 
 router = APIRouter(
@@ -66,6 +67,16 @@ def get_stats(
         'total subscribers' : len(subscribers),
         'total messages' : len(messages)
     }
+
+@router.get('/get_buyers')
+def all(db: Session = Depends(get_db),
+        user: schemas.User = Depends(get_current_user)):
+    return buyer.get_all(db)
+
+@router.get('/get_sellers')
+def all(db: Session = Depends(get_db),
+        user: schemas.User = Depends(get_current_user)):
+    return seller.get_all(db)
 
 # @router.post('/create_user')
 # def add_user(

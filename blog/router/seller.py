@@ -128,10 +128,6 @@ router = APIRouter(
 )
 
 
-@router.get('/')
-def all(db: Session = Depends(get_db)):
-    return seller.get_all(db)
-
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
