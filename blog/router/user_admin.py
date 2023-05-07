@@ -30,7 +30,8 @@ async def get_current_user(
 @router.post('/login')
 async def generate_token(form_data: _security.OAuth2PasswordRequestForm = Depends(), db : Session = Depends(get_db)):
     login = db.query(models.User).filter(models.User.username == form_data.username).first()
-    if not login.verify_password(form_data.password):
+
+    if not login or not login.verify_password(form_data.password):
         raise HTTPException(status_code=401, detail="Invalid Email Or password")
 
     user = db.query(models.User).filter(models.User.username == form_data.username).first()
