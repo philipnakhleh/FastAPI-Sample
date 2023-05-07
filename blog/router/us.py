@@ -44,7 +44,8 @@ async def create(request: schemas.Subscribers, db: Session = Depends(get_db)):
 async def create(request: schemas.Messages, db: Session = Depends(get_db)):
     new_message = models.Messages(
         email=request.email,
-        content = request.content
+        content = request.content,
+        send_date= request.send_date
     )
 
     db.add(new_message)
