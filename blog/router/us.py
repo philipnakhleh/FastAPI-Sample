@@ -114,23 +114,3 @@ def all():
              'mandatory' : False},
         ]
     }
-
-@router.get('/stats')
-def get_stats(db: Session = Depends(get_db)):
-    sellers = db.query(models.Seller).all()
-    buyers = db.query(models.Buyer).all()
-    verified_sellers = db.query(models.Seller).filter(models.Seller.verified).all()
-    verified_buyers = db.query(models.Buyer).filter(models.Buyer.verified).all()
-    subscribers = db.query(models.Subscribers).all()
-    messages = db.query(models.Messages).all()
-
-    return {
-        'total number' : len(sellers) + len(buyers),
-        'total verified' : len(verified_buyers) + len(verified_sellers),
-        'sellers number' : len(sellers),
-        'buyers number' : len(buyers),
-        'verified sellers number' : len(verified_sellers),
-        'verified buyers number' : len(verified_buyers),
-        'total subscribers' : len(subscribers),
-        'total messages' : len(messages)
-    }
