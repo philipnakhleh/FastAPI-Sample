@@ -95,6 +95,7 @@ class Subscribers(BaseModel):
 class Messages(BaseModel):
     email: str
     content: str
+    send_date: date
     class Config:
         orm_mode = True
 

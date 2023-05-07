@@ -83,6 +83,7 @@ class Messages(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String)
     content = Column(String)
+    send_date = Column(Date)
 
 
 class User(Base):
