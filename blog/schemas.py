@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from datetime import date
+from datetime import date, datetime
 
 
 class Seller(BaseModel):
@@ -86,6 +86,20 @@ class Investor(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class reset_password(BaseModel):
+    username: str
+    verification_code: str
+    time_stamp: datetime
+    verified: bool
+    class Config:
+        orm_mode = True
+
+class enter_code(BaseModel):
+    username: str
+    verification_code: str
+
 
 class Subscribers(BaseModel):
     email: str

@@ -1,5 +1,5 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, LargeBinary
+from sqlalchemy import Column, Integer, String, ForeignKey, Date, Boolean, LargeBinary, DateTime
 import passlib.hash as _hash
 
 
@@ -84,6 +84,14 @@ class Messages(Base):
     email = Column(String)
     content = Column(String)
     send_date = Column(Date)
+
+class reset_password(Base):
+    __tablename__ = 'reset_password'
+    id = Column(Integer, primary_key=True, index=True)
+    username = Column(String)
+    verification_code = Column(String)
+    time_stamp = Column(DateTime)
+    verified = Column(Boolean)
 
 
 class User(Base):
