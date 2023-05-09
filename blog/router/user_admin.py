@@ -207,7 +207,7 @@ def update_pass(
 #     db: Session = Depends(get_db),
 # ):
 #     new_user = models.User(
-#         username='philipnakhleh@gmail.com',
+#         username='sharbel1999x@gmail.com',
 #         password=_hash.bcrypt.hash('cozmos-space@1234567890')
 #     )
 #
